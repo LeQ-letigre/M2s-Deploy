@@ -1,53 +1,30 @@
-lxc_linux = {
-  "Adguard" = {
-    lxc_id = 113
-    name = "Adguard"
-    cores = 1
-    memory = 1024
-    ipconfig0 = "172.16.0.3/24"
-    gw = "172.16.0.254"
-    disk_size = "10G"
+lxc_linux = [
+  {
+    name           = "debian-1"
+    lxc_id         = 101
+    password       = "MotDePasseUltraSecret"
+    cores          = 2
+    memory         = 2048
+    nameserver     = "8.8.8.8"
+    storage        = "local-lvm"
+    disk_size      = "8G"
+    dhcp           = true
+    ipconfig0      = ""
+    gw             = ""
     network_bridge = "vmbr0"
-    }
-
-    "UptimeKuma" = {
-    lxc_id = 114
-    name = "UptimeKuma"
-    cores = 1
-    memory = 1024
-    ipconfig0 = "172.16.0.4/24"
-    gw = "172.16.0.254"
-    disk_size = "10G"
+  },
+  {
+    name           = "debian-2"
+    lxc_id         = 102
+    password       = "EncorePlusSecret"
+    cores          = 4
+    memory         = 4096
+    nameserver     = "1.1.1.1"
+    storage        = "local-lvm"
+    disk_size      = "10G"
+    dhcp           = false
+    ipconfig0      = "192.168.100.51/24"
+    gw             = "192.168.100.1"
     network_bridge = "vmbr0"
-    }
-
-    "GLPI" = {
-    lxc_id = 115
-    name = "GLPI"
-    cores = 2
-    memory = 2048
-    ipconfig0 = "172.16.0.5/24"
-    gw = "172.16.0.254"
-    disk_size = "30G"
-    disk_size = "20G"
-    network_bridge = "vmbr0"
-    }
-}
-
-win_srv = {
-  "WinSRV01" = {
-    name = "WinSRV01"
-    vmid = 201
-    ipconfig0 = "ip=172.16.0.1/24,gw=172.16.0.254"
-    dns = "8.8.8.8"
-
-    }
-
-  "WinSRV02" = {
-    name = "WinSRV02"
-    vmid = 202
-    ipconfig0 = "ip=172.16.0.2/24,gw=172.16.0.254"
-    dns = "172.16.0.1"
-
-    }
-}
+  }
+]
