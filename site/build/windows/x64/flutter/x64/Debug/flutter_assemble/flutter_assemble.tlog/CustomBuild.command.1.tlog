@@ -1,0 +1,28 @@
+^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\BUILD\WINDOWS\X64\CMAKEFILES\EE9B348C11E9EC414732CC9FB37E44B0\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\matteoservanty\Desktop\flutter\flutter PROJECT_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers FLUTTER_ROOT=C:\Users\matteoservanty\Desktop\flutter\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\windows\flutter\ephemeral PROJECT_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers FLUTTER_TARGET=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\lib\main.dart DART_DEFINES=RkxVVFRFUl9WRVJTSU9OPTMuMzUuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZDY5M2I0YjlkYg==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049YzI5ODA5MTM1MQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My45LjI= DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\.dart_tool\package_config.json C:/Users/matteoservanty/Desktop/flutter/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\BUILD\WINDOWS\X64\CMAKEFILES\8572AA4948229930E8FA2AE330F3AA5A\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/matteoservanty/Desktop/flutter/m2shelpers/windows -BC:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64 --check-stamp-file C:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
