@@ -108,8 +108,6 @@ if [ "$INSTALL_TERRANSIBLE" = "1" ]; then
     echo "Token créé avec succès :"
     echo "TF_TOKEN_ID     = $TF_TOKEN_ID"
     echo "TF_TOKEN_SECRET = $TF_TOKEN_SECRET"
-
-    else
 fi 
 
 if [ "$INSTALL_WINSRV" = "1" ]; then
@@ -124,10 +122,9 @@ if [ "$INSTALL_WINSRV" = "1" ]; then
     qm set $ID_WINSRV --name "WinTemplate"
     
     # 3) Marquer en template
-    qm template $ID_WINSRV
-else    
+    qm template $ID_WINSRV    
 fi 
-"
+
 rm -f ~/.ssh/known_hosts
 
 # Optionnel : attendre que la VM réponde au ping
