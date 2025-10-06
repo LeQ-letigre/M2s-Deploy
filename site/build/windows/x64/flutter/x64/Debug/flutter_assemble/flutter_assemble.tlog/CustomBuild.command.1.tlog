@@ -1,6 +1,6 @@
-^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\BUILD\WINDOWS\X64\CMAKEFILES\EE9B348C11E9EC414732CC9FB37E44B0\FLUTTER_WINDOWS.DLL.RULE
+^E:\DEV\M2S-DEPLOY\SITE\BUILD\WINDOWS\X64\CMAKEFILES\7D8A8CC833949F3E16FC10B6DC45A875\FLUTTER_WINDOWS.DLL.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\matteoservanty\Desktop\flutter\flutter PROJECT_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers FLUTTER_ROOT=C:\Users\matteoservanty\Desktop\flutter\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\windows\flutter\ephemeral PROJECT_DIR=C:\Users\matteoservanty\Desktop\flutter\m2shelpers FLUTTER_TARGET=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\lib\main.dart DART_DEFINES=RkxVVFRFUl9WRVJTSU9OPTMuMzUuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZDY5M2I0YjlkYg==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049YzI5ODA5MTM1MQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My45LjI= DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\matteoservanty\Desktop\flutter\m2shelpers\.dart_tool\package_config.json C:/Users/matteoservanty/Desktop/flutter/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\matte\resa-tablette\flutter PROJECT_DIR=E:\dev\M2s-Deploy\site FLUTTER_ROOT=C:\Users\matte\resa-tablette\flutter FLUTTER_EPHEMERAL_DIR=E:\dev\M2s-Deploy\site\windows\flutter\ephemeral PROJECT_DIR=E:\dev\M2s-Deploy\site FLUTTER_TARGET=E:\dev\M2s-Deploy\site\lib\main.dart DART_DEFINES=RkxVVFRFUl9WRVJTSU9OPTMuMzUuMw==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049YTQwMmQ5YTQzNw==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049ZGRmNDdkZDNmZg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My45LjI= DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=E:\dev\M2s-Deploy\site\.dart_tool\package_config.json C:/Users/matte/resa-tablette/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -8,7 +8,7 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\BUILD\WINDOWS\X64\CMAKEFILES\8572AA4948229930E8FA2AE330F3AA5A\FLUTTER_ASSEMBLE.RULE
+^E:\DEV\M2S-DEPLOY\SITE\BUILD\WINDOWS\X64\CMAKEFILES\49D2C7E3BD5CF3B7CD58CDBD696AECC4\FLUTTER_ASSEMBLE.RULE
 setlocal
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -16,9 +16,9 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\WINDOWS\FLUTTER\CMAKELISTS.TXT
+^E:\DEV\M2S-DEPLOY\SITE\WINDOWS\FLUTTER\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/matteoservanty/Desktop/flutter/m2shelpers/windows -BC:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64 --check-stamp-file C:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64/flutter/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SE:/dev/M2s-Deploy/site/windows -BE:/dev/M2s-Deploy/site/build/windows/x64 --check-stamp-file E:/dev/M2s-Deploy/site/build/windows/x64/flutter/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

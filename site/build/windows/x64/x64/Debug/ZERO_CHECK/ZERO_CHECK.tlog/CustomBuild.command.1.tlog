@@ -1,6 +1,6 @@
-^C:\USERS\MATTEOSERVANTY\DESKTOP\FLUTTER\M2SHELPERS\BUILD\WINDOWS\X64\CMAKEFILES\AF72606C421761C764D5334FBC818A64\GENERATE.STAMP.RULE
+^E:\DEV\M2S-DEPLOY\SITE\BUILD\WINDOWS\X64\CMAKEFILES\00F3A03F64CBD4067DBC66E8B7A2C68B\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/matteoservanty/Desktop/flutter/m2shelpers/windows -BC:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/matteoservanty/Desktop/flutter/m2shelpers/build/windows/x64/m2shelpers.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SE:/dev/M2s-Deploy/site/windows -BE:/dev/M2s-Deploy/site/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/dev/M2s-Deploy/site/build/windows/x64/m2shelpers.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
