@@ -1,0 +1,31 @@
+name: Test Flutter Web (Dev branch)
+
+on:
+  push:
+    branches:
+      - dev_site
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test --no-pub
+
+      - name: Try to build web release
+        run: flutter build web --release
