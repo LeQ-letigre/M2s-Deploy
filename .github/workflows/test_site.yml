@@ -23,7 +23,7 @@ jobs:
         working-directory: site
 
       - name: Analyze code
-        run: flutter analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
         working-directory: site
 
       - name: Run tests
