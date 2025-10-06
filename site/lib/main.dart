@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'accueil_page.dart';
+import 'theme_tiger.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const M2sTigres());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class M2sTigres extends StatelessWidget {
+  const M2sTigres({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'App Choix',
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      title: "TIGRES Deploy",
+      theme: Tiger.theme,
       home: const AccueilPage(),
     );
   }
