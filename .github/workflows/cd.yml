@@ -41,6 +41,7 @@ jobs:
           cd site
           flutter pub get
           flutter build web --release
+          cd site/buil/web
 
       - name: Deploy to internal server (via VPN)
         uses: appleboy/scp-action@v0.1.7
@@ -49,4 +50,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "site/build/web/*"
-          target: "/var/www/html/test/"
+          target: "/var/www/html/m2s-deploy/"
