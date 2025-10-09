@@ -49,4 +49,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "site/build/web/*"
-          target: "/var/www/html/m2shelper/"
+          target: "/var/www/html/test/"
