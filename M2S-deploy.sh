@@ -8,6 +8,7 @@ INSTALL_TERRANSIBLE=$1
 ID=$2
 PASSWORD=$3
 IP=$4
+IP_SHORT=$(echo "$IP" | cut -d '/' -f1)
 GATEWAY=$5
 DNS=$6
 BRIDGE=$7
@@ -20,7 +21,6 @@ LXC_TEMPLATE_URL="http://download.proxmox.com/images/system/$LXC_TEMPLATE_FILENA
 SSH_KEY_PATH="/root/.ssh/terransible"
 node=$(hostname)
 GITHUB_REPO=
-SSH_KEY_PATH="/root/.ssh/terransible"
 CONTAINER_SSH_PORT=22
 PM_API=$(hostname -i)
 TOKEN_USER="terraform-prov@pam"
@@ -44,8 +44,17 @@ if [ "$INSTALL_TERRANSIBLE" = "1" ]; then
 
     PUB_KEY=$(cat "${SSH_KEY_PATH}.pub")
 
-    echo "[+] Création du conteneur LXC "terransible"..."
-    pct create $ID "$LXC_TEMPLATE" \
+echo "[+] Création du conteneur LXC 'terransible'..."
+
+# Vérification des paramètres réseau
+if [ -z "$IP" ] || [ -z "$GATEWAY" ]; then
+    echo "❌ IP et GATEWAY sont obligatoires en mode IP fixe."
+    exit 1
+fi
+
+echo "[+] Création du conteneur LXC 'terransible' avec IP fixe..."
+
+pct create $ID "$LXC_TEMPLATE" \
     -hostname terransible \
     -cores 4 \
     -memory 4096 \
@@ -53,22 +62,24 @@ if [ "$INSTALL_TERRANSIBLE" = "1" ]; then
     -storage local-lvm \
     -rootfs local-lvm:8 \
     -features nesting=1 \
-    -password $PASSWORD \
+    -password "$PASSWORD" \
     -unprivileged 0
+
+
     echo "[+] Démarrage du conteneur..."
     pct start $ID
 
     # === 4. Attente que le conteneur soit up ===
     echo "[+] Attente du démarrage du conteneur..."
-    while ! ping -c 1 -W 1 "$IP" > /dev/null 2>&1; do
+    while ! ping -c 1 -W 1 "$IP_SHORT" > /dev/null 2>&1; do
         sleep 1
     done
 
     # === 5. Injection de la clé SSH ===
     echo "[+] Injection de la clé SSH dans le conteneur..."
-    pct exec $CTID -- mkdir -p /root/.ssh
-    pct exec $CTID -- bash -c "echo '$PUB_KEY' > /root/.ssh/authorized_keys"
-    pct exec $CTID -- chmod 600 /root/.ssh/authorized_keys
+    pct exec $ID -- mkdir -p /root/.ssh
+    pct exec $ID -- bash -c "echo '$PUB_KEY' > /root/.ssh/authorized_keys"
+    pct exec $ID -- chmod 600 /root/.ssh/authorized_keys
 
     # === 6. Authentification Proxmox et création du token ===
     echo "[+] Création du token Terraform sur Proxmox..."
@@ -113,8 +124,8 @@ fi
 if [ "$INSTALL_WINSRV" = "1" ]; then
     echo "[+] Installation de Windows Server"
     # 1) Télécharger la backup du win srv 2022
-    wget --no-check-certificate -O /var/lib/vz/dump/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst https://m2shelper.boisloret.fr/scripts/deploy-terransible/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst
-    wget --no-check-certificate -O /var/lib/vz/dump/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst.notes https://m2shelper.boisloret.fr/scripts/deploy-terransible/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst.notes
+    wget --no-check-certificate -O /var/lib/vz/dump/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst https://m2shelper.boisloret.fr/scripts/deploy-infra-gsb/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst
+    wget --no-check-certificate -O /var/lib/vz/dump/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst.notes https://m2shelper.boisloret.fr/scripts/deploy-infra-gsb/vzdump-qemu-101-2025_09_13-14_41_02.vma.zst.notes
     
     
     # 2) Restaurer sur le stockage voulu (ex: local-lvm) et VMID fixe (ex: 2000)
@@ -129,13 +140,13 @@ rm -f ~/.ssh/known_hosts
 
 # Optionnel : attendre que la VM réponde au ping
 echo "[+] Vérification que le conteneur est bien en ligne..."
-until ping -c1 -W1 "$IP" >/dev/null 2>&1; do
-  echo "⏳ En attente que $IP soit en ligne..."
+until ping -c1 -W1 "$IP_SHORT" >/dev/null 2>&1; do
+  echo "⏳ En attente que $IP_SHORT soit en ligne..."
   sleep 2
 done
 
 # === 7. SSH dans le conteneur pour la conf ===
-ssh -T -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" root@"$IP" <<EOF
+ssh -T -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" root@"$IP_SHORT" <<EOF
 
 #!/bin/bash
 set -e
