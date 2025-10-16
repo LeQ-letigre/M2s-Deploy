@@ -1,0 +1,16 @@
+- name: Déterminer les rôles à appliquer
+  set_fact:
+    roles_to_apply: >
+      {{
+        (['update'] if os == 'linux' else [])
+        + ([service] if service is defined else [])
+      }}   
+
+- name: Afficher les rôles qui vont être appliqués
+  debug:
+    msg: "{{ inventory_hostname }} → {{ roles_to_apply }}"
+
+- name: Appliquer les rôles
+  include_role:
+    name: "{{ item }}"
+  loop: "{{ roles_to_apply }}"

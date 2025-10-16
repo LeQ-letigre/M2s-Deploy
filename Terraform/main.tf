@@ -34,7 +34,9 @@ resource "proxmox_lxc" "lxc_linux" {
   cores            = each.value.cores
   memory           = each.value.memory
   ssh_public_keys  = tls_private_key.lxc_ssh_key[each.key].public_key_openssh
-  nameserver       = each.value.nameserver
+  dns              = each.value.dns
+  service          = each.value.service
+  ostype           = each.value.ostype
 
   rootfs {
     storage = each.value.storage
@@ -75,6 +77,8 @@ resource "proxmox_vm_qemu" "winsrv" {
   scsihw      = "virtio-scsi-single"
   boot        = "order=scsi0;ide1"
   target_node = var.target_node
+  service     = each.value.service
+  ostype     = each.value.ostype 
 
 
   memory      = each.value.memory
@@ -112,7 +116,24 @@ resource "proxmox_vm_qemu" "winsrv" {
     }
 
   ipconfig0  = each.value.ipconfig0
-  nameserver = each.value.dns 
-  dhcp       = each.value.dhcp
+  dns        = each.value.dns 
 
-
+output "vms" {
+  value = merge(
+    { for name, vm in proxmox_lxc.lxc_linux : name => {
+        ip      = vm.network[0].ip
+        os      = vm.ostype
+        service = vm.service
+        user    = "root"
+        ssh_key = pathexpand("~/.ssh/${vm.hostname}-ed25519")
+      }
+    },
+    { for name, vm in proxmox_vm_qemu.winsrv : name => {
+        ip      = vm.ipconfig0
+        os      = vm.ostype
+        service = vm.service
+        user    = "Administrator"
+      }
+    }
+  )
+}

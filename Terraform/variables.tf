@@ -30,10 +30,12 @@ variable "lxc_linux" {
     nameserver = string
     storage = string
     disk_size = string
-    dhcp = optional (bool)
-    ipconfig0 = optional (string)
-    gw = optional (string)
+    ipconfig0 = string
+    gw = string
+    dns = string
     network_bridge = string
+    service = string
+    ostype = string
   }))
   
 }
@@ -47,9 +49,11 @@ variable "win_srv" {
     storage = string
     size = string
     network_bridge = string
-    ipconfig0 = optional (string)
-    dns = optional (string)
-    dhcp = optional (bool)
+    ipconfig0 = string
+    gw = string
+    dns = string
+    service = string
+    ostype = string
   }))
   
 }

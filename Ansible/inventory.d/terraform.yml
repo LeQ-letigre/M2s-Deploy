@@ -1,0 +1,5 @@
+# Fichier qui va lire l'output de terraform pour créer l'inventaire dynamique
+plugin: community.general.terraform
+
+# Chemin vers le fichier d'état de Terraform
+state: ../Terraform/terraform.tfstate

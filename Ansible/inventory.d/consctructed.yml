@@ -1,0 +1,7 @@
+plugin: constructed
+strict: False
+
+# Définition des groupes dynamiques à partir des variables Terraform
+groups:
+  linuxs: "os == 'linux'"
+  windows: "os == 'windows'"
