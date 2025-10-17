@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'choix_page.dart';
 import 'theme_tiger.dart';
+import 'main.dart'; // pour accéder à themeNotifier global
 
 class AccueilPage extends StatelessWidget {
   const AccueilPage({super.key});
@@ -13,46 +14,89 @@ class AccueilPage extends StatelessWidget {
     );
   }
 
+  void _toggleTheme() {
+    themeNotifier.value = themeNotifier.value == ThemeMode.dark
+        ? ThemeMode.light
+        : ThemeMode.dark;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: TigerAnimatedBG(
-        rightToLeft: true,
-        speed: 0.25,
-        child: Center(
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Container(
+      decoration: Tiger.tigerBackground(context),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: isDark
+              ? Colors.black.withValues(alpha: 0.7)
+              : Colors.orange.shade50.withValues(alpha: 0.8),
+          title: Text(
+            "TIGRES Deploy",
+            style: TextStyle(
+              color: isDark ? Colors.orangeAccent : Colors.deepOrange,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: [
+            IconButton(
+              tooltip: "Changer le mode d'affichage",
+              onPressed: _toggleTheme,
+              icon: Icon(
+                isDark ? Icons.wb_sunny_rounded : Icons.nightlight_round,
+                color: isDark ? Colors.orangeAccent : Colors.deepOrange,
+              ),
+            ),
+          ],
+        ),
+        body: Center(
           child: SingleChildScrollView(
             child: Container(
               width: 420,
               padding: const EdgeInsets.all(32),
               decoration: BoxDecoration(
-                color: const Color(0xFF0E0E0E).withOpacity(0.9),
+                color: isDark
+                    ? const Color(0xFF0E0E0E).withValues(alpha: 0.9)
+                    : Colors.white.withValues(alpha: 0.95),
                 borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: Colors.orangeAccent.withOpacity(0.7)),
+                border: Border.all(
+                  color: isDark
+                      ? Colors.orangeAccent.withValues(alpha: 0.6)
+                      : Colors.deepOrange.withValues(alpha: 0.4),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: isDark
+                        ? Colors.black.withValues(alpha: 0.4)
+                        : Colors.orange.withValues(alpha: 0.2),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // --- Titre principal ---
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Flexible(
-                        flex: 0,
-                        child: Icon(
-                          Icons.auto_fix_high_rounded,
-                          color: Colors.orangeAccent,
-                          size: 28,
-                        ),
+                    children: [
+                      Icon(
+                        Icons.auto_fix_high_rounded,
+                        color: isDark ? Colors.orangeAccent : Colors.deepOrange,
+                        size: 28,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Flexible(
-                        flex: 1,
                         child: Text(
                           "Terransible Setup",
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.orangeAccent,
+                            color: isDark
+                                ? Colors.orangeAccent
+                                : Colors.deepOrangeAccent,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
                           ),
@@ -61,54 +105,103 @@ class AccueilPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  const Divider(color: Colors.orangeAccent, thickness: 1),
+                  Divider(
+                    color: isDark
+                        ? Colors.orangeAccent
+                        : Colors.deepOrangeAccent.withValues(alpha: 0.8),
+                    thickness: 1,
+                  ),
                   const SizedBox(height: 24),
-
-                  // --- Description ---
-                  const Text(
+                  Text(
                     "Votre mission : déployer vos machines comme un vrai tigre.\nAvez-vous déjà Terransible d’installé ?",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: isDark ? Colors.white70 : Colors.black87,
                       fontSize: 16,
                       height: 1.4,
                     ),
                   ),
                   const SizedBox(height: 36),
 
-                  // --- Boutons de choix ---
+                  /// 🔘 Boutons mieux équilibrés
                   Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton.icon(
+                        child: ElevatedButton(
                           onPressed: () => _goToChoixPage(context, true),
-                          style: Tiger.tigerButton(
-                            background: Colors.orangeAccent,
+                          style:
+                              Tiger.tigerButton(
+                                background: isDark
+                                    ? Colors.orangeAccent
+                                    : Colors.deepOrangeAccent,
+                                foreground: isDark
+                                    ? Colors.black
+                                    : Colors.white,
+                              ).copyWith(
+                                padding: const WidgetStatePropertyAll(
+                                  EdgeInsets.symmetric(vertical: 14),
+                                ),
+                              ),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.check_rounded, size: 18),
+                                SizedBox(width: 6),
+                                Text(
+                                  "Oui, rugissons",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ],
+                            ),
                           ),
-                          icon: const Icon(Icons.check_rounded),
-                          label: const Text("Oui, rugissons"),
                         ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
-                        child: ElevatedButton.icon(
+                        child: ElevatedButton(
                           onPressed: () => _goToChoixPage(context, false),
-                          style: Tiger.tigerButton(
-                            background: Colors.redAccent,
+                          style:
+                              Tiger.tigerButton(
+                                background: isDark
+                                    ? Colors.redAccent
+                                    : Colors.deepOrange.withValues(alpha: 0.9),
+                                foreground: isDark
+                                    ? Colors.black
+                                    : Colors.white,
+                              ).copyWith(
+                                padding: const WidgetStatePropertyAll(
+                                  EdgeInsets.symmetric(vertical: 14),
+                                ),
+                              ),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.close_rounded, size: 18),
+                                SizedBox(width: 6),
+                                Text(
+                                  "Non, en solo",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ],
+                            ),
                           ),
-                          icon: const Icon(Icons.close_rounded),
-                          label: const Text("Non, en solo"),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 28),
-
-                  // --- Astuce ---
-                  const Text(
+                  Text(
                     "🔥 Créé par des TIGRES, pour des TIGRES.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white38, fontSize: 12),
+                    style: TextStyle(
+                      color: isDark ? Colors.white38 : Colors.black54,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                 ],
               ),

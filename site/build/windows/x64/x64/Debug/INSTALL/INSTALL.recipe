@@ -2,19 +2,19 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\dev\M2s-Deploy\site\build\windows\x64\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\matteoservanty\Desktop\flutter\M2s-Deploy\site\build\windows\x64\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\dev\M2s-Deploy\site\build\windows\x64\flutter\x64\Debug\flutter_assemble</FullPath>
+      <FullPath>C:\Users\matteoservanty\Desktop\flutter\M2s-Deploy\site\build\windows\x64\flutter\x64\Debug\flutter_assemble</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\dev\M2s-Deploy\site\build\windows\x64\runner\Debug\m2shelpers.exe</FullPath>
+      <FullPath>C:\Users\matteoservanty\Desktop\flutter\M2s-Deploy\site\build\windows\x64\runner\Debug\m2shelpers.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\dev\M2s-Deploy\site\build\windows\x64\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\matteoservanty\Desktop\flutter\M2s-Deploy\site\build\windows\x64\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\dev\M2s-Deploy\site\build\windows\x64\x64\Debug\INSTALL</FullPath>
+      <FullPath>C:\Users\matteoservanty\Desktop\flutter\M2s-Deploy\site\build\windows\x64\x64\Debug\INSTALL</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

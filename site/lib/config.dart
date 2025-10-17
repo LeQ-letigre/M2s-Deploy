@@ -1,3 +1,3 @@
 class AppConfig {
-  static const String pocketBaseUrl = "http://192.168.1.202:8090";
+  static const String pocketBaseUrl = "https://m2shelper.boisloret.fr/pocket/";
 }
